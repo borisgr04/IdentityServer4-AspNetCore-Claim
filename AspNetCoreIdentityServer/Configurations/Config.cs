@@ -133,6 +133,31 @@ namespace AspNetCoreIdentityServer.Configurations
                         new Claim("website", "http://hamidmosalla.com")
                     },*/
                     ClientClaimsPrefix = ""
+                },
+                new Client
+                {
+                    ClientId = "ClienteAnibal",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+
+                    ClientSecrets =
+                    {
+                        new Secret("123654".Sha256())
+                    },
+                    AllowedScopes = {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "Api1"
+                    },
+                    AlwaysSendClientClaims = true,
+                    AlwaysIncludeUserClaimsInIdToken = true,
+                    AccessTokenType = AccessTokenType.Jwt,
+                    /*,
+                    Claims = new[]
+                    {
+                        new Claim("Employee", "Mosalla"),
+                        new Claim("website", "http://hamidmosalla.com")
+                    },*/
+                    ClientClaimsPrefix = ""
                 }
             };
         }
