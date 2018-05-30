@@ -85,11 +85,21 @@ namespace AspNetCoreIdentityServer.Configurations
                 x.Wait();
                 claims.AddRange(x.Result);
             }
+            if (user.UserName == "borisgr04@gmail.com") {
+                var claim = new Claim(JwtClaimTypes.Role, "Admin");
+                claims.Add(claim);
+            }
+            if (user.UserName == "borisgr04@hotmail.com")
+            {
+                var claim = new Claim(JwtClaimTypes.Role, "Front");
+                claims.Add(claim);
+            }
 
-            //if (userManager.SupportsUserRole)
+            //if (_userManager.SupportsUserRole)
             //{
-            //    var roles = await userManager.GetRolesAsync(user);
-            //    claims.AddRange(roles.Select(role => new Claim(JwtClaimTypes.Role, role)));
+            //    var roles = _userManager.GetRolesAsync(user);
+            //    roles.Wait();
+            //    claims.AddRange(roles.Result.Select(role => new Claim(JwtClaimTypes.Role, role)));
             //}
 
             return claims;

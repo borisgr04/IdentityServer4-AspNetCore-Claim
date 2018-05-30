@@ -23,5 +23,22 @@ namespace ApiResource.Controllers
         {
             return new JsonResult(new { ApiName = "Api1", AuthorizationType = "Without Policy" });
         }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [Route("api/roles")]
+        public IActionResult ResourceRoles()
+        {
+            return new JsonResult(new { ApiName = "Api1", AuthorizationType = "Without Policy" });
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Front")]
+        [Route("api/front")]
+        public IActionResult ResourceFront()
+        {
+            return new JsonResult(new { ApiName = "Api1", AuthorizationType = "Without Policy" });
+        }
+
     }
 }
