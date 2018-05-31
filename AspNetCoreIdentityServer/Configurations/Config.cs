@@ -137,7 +137,7 @@ namespace AspNetCoreIdentityServer.Configurations
                 new Client
                 {
                     ClientId = "ClienteAnibal",
-                    AllowedGrantTypes =GrantTypes.ClientCredentials,//GrantTypes.ResourceOwnerPassword,
+                    AllowedGrantTypes =GrantTypes.ResourceOwnerPassword,//GrantTypes.ResourceOwnerPassword,
                    RedirectUris = {"http://localhost:5003/signin-oidc"},
                     ClientSecrets =
                     {

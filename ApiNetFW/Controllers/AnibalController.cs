@@ -5,11 +5,11 @@ namespace ApiNetFW.Controllers
     public class AnibalController : ApiController
     {
         [HttpGet]
-        //[Authorize(Roles = "Front")]
+        [Authorize]
         [Route("api/anibal")]
         public IHttpActionResult ResourceFront()
         {
-            var response = new AnibalResponse() { Mensaje = "Api consumida correctamente" };
+            var response = new AnibalResponse() { Mensaje = "Api consumida correctamente juana la loca" };
             return Ok(response);
         }
     }
