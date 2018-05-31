@@ -85,11 +85,11 @@ namespace AspNetCoreIdentityServer.Configurations
                 x.Wait();
                 claims.AddRange(x.Result);
             }
-            if (user.UserName == "borisgr04@gmail.com") {
+            if (user.UserName == "anibal@anibal.com") {
                 var claim = new Claim(JwtClaimTypes.Role, "Admin");
                 claims.Add(claim);
             }
-            if (user.UserName == "borisgr04@hotmail.com")
+            if (user.UserName == "guerra@guerra.com")
             {
                 var claim = new Claim(JwtClaimTypes.Role, "Front");
                 claims.Add(claim);

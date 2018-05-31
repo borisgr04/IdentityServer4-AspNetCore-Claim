@@ -24,6 +24,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiNetFW", "ApiNetFW\ApiNetFW.csproj", "{D0066373-9845-4802-9814-18ED9DA2E98C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumingApiRest", "ConsumingApiRest\ConsumingApiRest.csproj", "{B2D330FA-8B9A-43F1-AE93-BA6C54CEBA4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{D0066373-9845-4802-9814-18ED9DA2E98C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0066373-9845-4802-9814-18ED9DA2E98C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0066373-9845-4802-9814-18ED9DA2E98C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D330FA-8B9A-43F1-AE93-BA6C54CEBA4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D330FA-8B9A-43F1-AE93-BA6C54CEBA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D330FA-8B9A-43F1-AE93-BA6C54CEBA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D330FA-8B9A-43F1-AE93-BA6C54CEBA4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

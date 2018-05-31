@@ -37,7 +37,7 @@ namespace AspNetCoreIdentityServer.Configurations
 
         public static IEnumerable<Client> GetClients()
         {
-            return new List<Client>
+            var lista=new List<Client>
             {
                 new Client
                 {
@@ -137,8 +137,8 @@ namespace AspNetCoreIdentityServer.Configurations
                 new Client
                 {
                     ClientId = "ClienteAnibal",
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-
+                    AllowedGrantTypes =GrantTypes.ClientCredentials,//GrantTypes.ResourceOwnerPassword,
+                   RedirectUris = {"http://localhost:5003/signin-oidc"},
                     ClientSecrets =
                     {
                         new Secret("123654".Sha256())
@@ -148,6 +148,7 @@ namespace AspNetCoreIdentityServer.Configurations
                         IdentityServerConstants.StandardScopes.Profile,
                         "Api1"
                     },
+                      AllowOfflineAccess = true,
                     AlwaysSendClientClaims = true,
                     AlwaysIncludeUserClaimsInIdToken = true,
                     AccessTokenType = AccessTokenType.Jwt,
@@ -160,6 +161,7 @@ namespace AspNetCoreIdentityServer.Configurations
                     ClientClaimsPrefix = ""
                 }
             };
+            return lista;
         }
     }
 }

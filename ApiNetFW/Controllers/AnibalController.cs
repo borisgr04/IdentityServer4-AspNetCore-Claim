@@ -1,14 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace ApiNetFW.Controllers
 {
     public class AnibalController : ApiController
     {
+        [HttpGet]
+        //[Authorize(Roles = "Front")]
+        [Route("api/anibal")]
+        public IHttpActionResult ResourceFront()
+        {
+            var response = new AnibalResponse() { Mensaje = "Api consumida correctamente" };
+            return Ok(response);
+        }
+    }
 
+    class AnibalResponse
+    {
+        public string Mensaje { get; set; }
     }
 }

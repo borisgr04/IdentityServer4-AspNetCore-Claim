@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 
@@ -10,13 +11,21 @@ namespace ApiNetFW
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "Cookies"
+            });
+
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 AuthenticationType = "oidc",
                 SignInAsAuthenticationType = "Cookies",
                 Authority = "http://localhost:5000",
-                RedirectUri = "http://localhost:5002/signin-oidc",
+                RedirectUri = "http://localhost:5003/signin-oidc",
                 ClientId = "ClienteAnibal",
+                RequireHttpsMetadata = false,
+                ClientSecret= "123654",
+                Scope= "Api1",
             });
 
             // Para obtener más información sobre cómo configurar la aplicación, visite https://go.microsoft.com/fwlink/?LinkID=316888
