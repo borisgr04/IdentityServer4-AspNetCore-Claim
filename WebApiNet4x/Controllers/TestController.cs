@@ -12,7 +12,8 @@ namespace WebApiNet4x.Controllers
     [RoutePrefix("api/test")]
     public class TestController : ApiController
     {
-        [Authorize (Roles ="Admin")]
+        //(Roles ="Admin")
+//        [Authorize]
         public IHttpActionResult Get()
         {
             var stringClaimsBuilder = new StringBuilder();

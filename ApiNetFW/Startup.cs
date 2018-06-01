@@ -20,9 +20,9 @@ namespace ApiNetFW
             {
                 AuthenticationType = "oidc",
                 SignInAsAuthenticationType = "Cookies",
-                Authority = "http://localhost:5000",
+                Authority = "https://demo.identityserver.io/",
                 RedirectUri = "http://localhost:5003/signin-oidc",
-                ClientId = "ClienteAnibal",
+                ClientId = "mplicit.shortlived",
                 RequireHttpsMetadata = false,
                 ClientSecret= "123654",
                 Scope= "Api1",

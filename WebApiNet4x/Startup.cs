@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -16,19 +17,22 @@ namespace WebApiNet4x
     {
         public void Configuration(IAppBuilder app)
         {
+           
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
 
             DesactivarLaAsignacionPredeterminadaDeJwt();
 
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "http://localhost:5000",
-                RequiredScopes = new[] { "Api1" },
+                Authority = "https://demo.identityserver.io/",
+                RequiredScopes = new[] { "api" },
                 DelayLoadMetadata = true,
             });
 
             var config = new HttpConfiguration();
             config.MapHttpAttributeRoutes();
+            config.EnableCors(new EnableCorsAttribute("*","*", "*"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
