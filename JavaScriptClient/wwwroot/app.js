@@ -17,15 +17,25 @@ function log() {
 document.getElementById("login").addEventListener("click", login, false);
 document.getElementById("api").addEventListener("click", api, false);
 document.getElementById("logout").addEventListener("click", logout, false);
-
+//Servidor de identityserver de prueba
+//var config = {
+//    authority: "https://demo.identityserver.io",
+//    client_id: "implicit.shortlived",
+//    redirect_uri: "http://localhost:5003/callback.html",
+//    response_type: "id_token token",
+//    scope:"openid profile api",
+//    post_logout_redirect_uri : "http://localhost:5003/index.html"
+//};
+//servidor del proyecto
 var config = {
-    authority: "https://demo.identityserver.io",
-    client_id: "implicit.shortlived",
+    authority: "http://localhost:5000",
+    client_id: "js",
     redirect_uri: "http://localhost:5003/callback.html",
     response_type: "id_token token",
-    scope:"openid profile api",
-    post_logout_redirect_uri : "http://localhost:5003/index.html"
+    scope: "openid profile Api1",
+    post_logout_redirect_uri: "http://localhost:5003/index.html"
 };
+
 var mgr = new Oidc.UserManager(config);
 
 mgr.getUser().then(function (user) {
@@ -44,12 +54,11 @@ function login() {
 function api() {
     mgr.getUser().then(function (user) {
         var url = "http://localhost:60867/api/test";
-        console.log(user.access_token);
-        alert(user.access_token);
+        
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);
         xhr.onload = function () {
-            alert(JSON.parse(xhr.responseText));
+           
             log(xhr.status, JSON.parse(xhr.responseText));
         };
         xhr.onerror = function (error) {
@@ -58,9 +67,9 @@ function api() {
         xhr.onreadystatechange = function (oEvent) {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
-                    alert(xhr.responseText)
+                    console.log(xhr.responseText)
                 } else {
-                    alert("Error", JSON.stringify(xhr));
+                    console.log("Error", JSON.stringify(xhr));
                 }
             }
         }; 

@@ -25,8 +25,10 @@ namespace WebApiNet4x
 
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "https://demo.identityserver.io/",
-                RequiredScopes = new[] { "api" },
+                //Authority = "https://demo.identityserver.io/",
+                //RequiredScopes = new[] { "api" },
+                Authority = "http://localhost:5000",
+                RequiredScopes = new[] { "Api1" },
                 DelayLoadMetadata = true,
             });
 

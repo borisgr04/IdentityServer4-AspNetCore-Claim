@@ -10,7 +10,7 @@ namespace ConsumingApiRest
         static void Main(string[] args)
         {
             var aaaqa = RequestWithResourceOwnerPasswordWithRole("http://localhost:60867/api/test", "anibal@anibal.com", "1.Admin.1");
-            //var aaaqa = RequestWithClientCredentialsWithPolicy("http://localhost:53469/api/anibal");
+            
             var requestWithResourceOwnerPasswordRoles = aaaqa.Result;
 
             Console.WriteLine($"{nameof(requestWithResourceOwnerPasswordRoles)} : {requestWithResourceOwnerPasswordRoles}");
