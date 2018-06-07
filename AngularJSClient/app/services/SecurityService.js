@@ -69,6 +69,68 @@
             }
         }
 
+        var authorizeCallback = function () {
+            console.log("AuthorizedController created, has hash");
+            var hash = window.location.hash.substr(1);
+
+            var result = hash.split('&').reduce(function (result, item) {
+                var parts = item.split('=');
+                result[parts[0]] = parts[1];
+                return result;
+            }, {});
+
+            var token = "";
+            var id_token = "";
+            var authResponseIsValid = true;
+            //alert("error " + JSON.stringify(result));
+            console.log(result);
+            //if (!result.error) {
+
+            //    if (result.state !== localStorageService.get("authStateControl")) {
+            //        console.log("AuthorizedCallback incorrect state");
+            //    } else {
+
+            //        token = result.access_token;
+            //        id_token = result.id_token
+
+            //        var dataIdToken = getDataFromToken(id_token);
+            //        console.log(dataIdToken);
+
+            //        // validate nonce
+            //        if (dataIdToken.nonce !== localStorageService.get("authNonce")) {
+            //            console.log("AuthorizedCallback incorrect nonce");
+            //        } else {
+            //            localStorageService.set("authNonce", "");
+            //            localStorageService.set("authStateControl", "");
+
+            //            authResponseIsValid = true;
+            //            console.log("AuthorizedCallback state and nonce validated, returning access token");
+            //        }
+            //    }
+            //}
+
+            if (result.error) {
+                alert("Error obteniendo el token");
+                authResponseIsValid = false;
+            } else {
+                token = result.access_token;
+                id_token = result.id_token
+            }
+
+            if (authResponseIsValid) {
+                SetAuthorizationData(token, id_token);
+                console.log(localStorageService.get("authorizationData"));
+
+                $state.go("overviewindex");
+            }
+            else {
+                ResetAuthorizationData();
+                $state.go("unauthorized");
+            }
+
+        }
+
+
         var authorize = function () {
             console.log("AuthorizedController time to log on");
 
@@ -88,19 +150,28 @@
         }
 
         var DoAuthorization = function () {
-            mgr.getUser().then(function (user) {
-                if (user) {
-                    console.log(user);
-                    SetAuthorizationData(user.access_token,user.id_token);
-                } else {
-                    Logoff();
-                }
-            });
+            ResetAuthorizationData();
+            //alert("prueba "+$window.location.hash);
+            if ($window.location.hash) {
+                authorizeCallback();
+            }
+            else {
+                authorize();
+            }
+            //mgr.getUser().then(function (user) {
+            //    if (user) {
+            //        console.log(user);
+            //        SetAuthorizationData(user.access_token,user.id_token);
+            //    } else {
+            //        authorize();
+            //    }
+            //});
         }
 
         var Logoff = function () {
-            ResetAuthorizationData();
-            $window.location = "https://localhost:44346/unauthorized.html";
+            mgr.signoutRedirect();
+            //ResetAuthorizationData();
+            //$window.location = "https://localhost:44376/unauthorized";
         }
 
         return {
