@@ -13,7 +13,7 @@ namespace WebApiNet4x.Controllers
     public class TestController : ApiController
     {
         //(Roles ="Admin")
-//        [Authorize]
+        [Authorize (Roles ="Admin")]
         public IHttpActionResult Get()
         {
             var stringClaimsBuilder = new StringBuilder();
@@ -23,7 +23,7 @@ namespace WebApiNet4x.Controllers
                 stringClaimsBuilder.Append($"{claim.Type} {claim.Value}");
             }
             stringClaimsBuilder.Append("Änibal el mejor");
-             return Ok(System.Security.Claims.ClaimsPrincipal.Current.Claims ); 
+            return Ok(stringClaimsBuilder.ToString());//System.Security.Claims.ClaimsPrincipal.Current.Claims ); 
         }
     }
 }

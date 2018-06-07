@@ -1,4 +1,4 @@
-﻿/// <reference path="oidc-client.js" />
+﻿
 
 function log() {
     document.getElementById('results').innerText = '';
@@ -35,6 +35,7 @@ var config = {
     scope: "openid profile Api1",
     post_logout_redirect_uri: "http://localhost:5003/index.html"
 };
+
 
 var mgr = new Oidc.UserManager(config);
 

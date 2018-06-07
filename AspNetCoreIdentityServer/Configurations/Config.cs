@@ -178,6 +178,25 @@ namespace AspNetCoreIdentityServer.Configurations
                         IdentityServerConstants.StandardScopes.Profile,
                         "Api1"
                     },
+                },
+                 // JavaScript Client
+                new Client
+                {
+                    ClientId = "jsAngular",
+                    ClientName = "Angular Client",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+
+                    RedirectUris = { "https://localhost:44376/authorized" },
+                    PostLogoutRedirectUris = { "https://localhost:44376/unauthorized" },
+                    AllowedCorsOrigins = { "https://localhost:44376" },
+                    RequireConsent = false,
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "Api1"
+                    },
                 }
             };
             return lista;

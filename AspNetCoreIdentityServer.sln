@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiNet4x", "WebApiNet4x\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaScriptClient", "JavaScriptClient\JavaScriptClient.csproj", "{5BBFCA66-E8F1-477A-8DDA-43B4EE5F9B8B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularJSClient", "AngularJSClient\AngularJSClient.csproj", "{1F7D64C4-ACA2-40BC-B57F-25636FA691C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{5BBFCA66-E8F1-477A-8DDA-43B4EE5F9B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BBFCA66-E8F1-477A-8DDA-43B4EE5F9B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BBFCA66-E8F1-477A-8DDA-43B4EE5F9B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F7D64C4-ACA2-40BC-B57F-25636FA691C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F7D64C4-ACA2-40BC-B57F-25636FA691C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F7D64C4-ACA2-40BC-B57F-25636FA691C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F7D64C4-ACA2-40BC-B57F-25636FA691C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
