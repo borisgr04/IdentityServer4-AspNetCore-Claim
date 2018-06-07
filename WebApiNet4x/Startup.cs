@@ -17,16 +17,10 @@ namespace WebApiNet4x
     {
         public void Configuration(IAppBuilder app)
         {
-           
-
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
-
             DesactivarLaAsignacionPredeterminadaDeJwt();
-
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                //Authority = "https://demo.identityserver.io/",
-                //RequiredScopes = new[] { "api" },
                 Authority = "http://localhost:5000",
                 RequiredScopes = new[] { "Api1" },
                 DelayLoadMetadata = true,
@@ -41,36 +35,12 @@ namespace WebApiNet4x
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
                 );
+
             app.UseWebApi(config);
 
-
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions());
-            //app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
-            //{
-            //    Authority = "http://localhost:5000",
-            //    ValidationMode = ValidationMode.ValidationEndpoint,
-            //    RequiredScopes = new[] { "Api1" },
-            //    ClientId = "Api1",
-            //    DelayLoadMetadata = true,
-            //    //RequireHttpsMetadata = false,
-            //    ClientSecret = "123654",
-            //    //    options.Authority = "http://localhost:5000";
-            //    //options.RequireHttpsMetadata = false;
-            //    //ApiName = "Api1",
-            //});
-
-            ////configure web api
-            //var config = new HttpConfiguration();
-            //config.MapHttpAttributeRoutes();
-
-            ////require authentication for all controllers
-
-            //config.Filters.Add(new AuthorizeAttribute());
-
-            //app.UseWebApi(config);
         }
 
-        private static void DesactivarLaAsignacionPredeterminadaDeJwt()
+        private void DesactivarLaAsignacionPredeterminadaDeJwt()
         {
             JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
         }
