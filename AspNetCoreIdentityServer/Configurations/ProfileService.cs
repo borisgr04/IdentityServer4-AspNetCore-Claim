@@ -83,6 +83,13 @@ namespace AspNetCoreIdentityServer.Configurations
             {
                 var x = _userManager.GetClaimsAsync(user);
                 x.Wait();
+                var roles = _userManager.GetRolesAsync(user);
+                x.Wait();
+                foreach (var rol in roles.Result)
+                {
+                    Claim claim = new Claim(JwtClaimTypes.Role, rol);
+                    claims.Add(claim);
+                }
                 claims.AddRange(x.Result);
             }
             if (user.UserName == "anibal@anibal.com") {

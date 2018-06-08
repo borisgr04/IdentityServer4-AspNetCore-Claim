@@ -40,6 +40,12 @@
                 .then(function (response) {
                     alert(JSON.stringify(response));
                     return response.data;
-                });
+            });
+
+        $http.get("http://localhost:60867/api/Prueba")
+            .then(function (response) {
+                alert(JSON.stringify(response));
+                return response.data;
+            });
 	}
 })();
