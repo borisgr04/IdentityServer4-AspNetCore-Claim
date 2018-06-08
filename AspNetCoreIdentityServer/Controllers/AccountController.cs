@@ -259,14 +259,16 @@ namespace AspNetCoreIdentityServer.Controllers
             // build a model so the logout page knows what to display
             var vm = await _account.BuildLogoutViewModelAsync(logoutId);
 
-            if (vm.ShowLogoutPrompt == false)
-            {
+            //SE COMENTA EL IF PARA QUE EL PROYECTO DE ANGULAR HAGA LOGOUT NORMALMENTE Y NO GENERE EXCEPCIÓN
+
+            //if (vm.ShowLogoutPrompt == false)
+            //{
                 // if the request for logout was properly authenticated from IdentityServer, then
                 // we don't need to show the prompt and can just log the user out directly.
                 return await Logout(vm);
-            }
+            //}
 
-            return View(vm);
+            //return View(vm);
         }
 
         [HttpPost]

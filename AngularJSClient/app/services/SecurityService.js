@@ -141,8 +141,6 @@
             
             console.log(mgr);
             mgr.getUser().then(function (user,xx) {
-                alert(JSON.stringify(user));
-                alert(JSON.stringify(xx));
                 if (user) {
                     authorizeCallback();
                 }
@@ -170,7 +168,7 @@
 
         var Logoff = function () {
             mgr.signoutRedirect();
-            //ResetAuthorizationData();
+            ResetAuthorizationData();
             //$window.location = "https://localhost:44376/unauthorized";
         }
 
