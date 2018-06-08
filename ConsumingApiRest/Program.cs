@@ -15,8 +15,51 @@ namespace ConsumingApiRest
 
             Console.WriteLine($"{nameof(requestWithResourceOwnerPasswordRoles)} : {requestWithResourceOwnerPasswordRoles}");
 
+            var requestWithClientCredetials = Task.Run(RequestWithClientCredentialsWithPolicy).Result;
+
+            Console.WriteLine($"{nameof(requestWithClientCredetials)} : {requestWithClientCredetials}");
+
             Console.ReadLine();
         }
+
+        public static async Task<string> RequestWithClientCredentialsWithPolicy()
+        {
+            async Task<string> GetAccessToken()
+            {
+                var openIdConnectEndPoint = await DiscoveryClient.GetAsync("http://localhost:5000");
+                var tokenClient = new TokenClient(openIdConnectEndPoint.TokenEndpoint, "client1", "123654");
+                var accessToken = await tokenClient.RequestClientCredentialsAsync("Api1");
+
+                if (accessToken.IsError)
+                {
+                    Console.WriteLine(accessToken.Error);
+                    return accessToken.Error;
+                }
+
+                Console.WriteLine(accessToken.Json);
+
+                return accessToken.AccessToken;
+            }
+
+            using (var client = new HttpClient())
+            {
+                var accessToken = await GetAccessToken();
+
+                client.SetBearerToken(accessToken);
+
+                var response = await client.GetAsync("http://localhost:60867/api/sinauth");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return response.StatusCode.ToString();
+                }
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                return content;
+            }
+        }
+
 
         public static async Task<string> RequestWithClientCredentialsWithPolicy(string url)
         {
